@@ -1,4 +1,4 @@
-import Post from './Post/Posts'
+import Post from './Post/Post'
 import React from 'react'
 import cssClass from './MyPosts.module.css'
 
