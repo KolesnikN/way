@@ -4,11 +4,13 @@ import cssClass from './MyPosts.module.css'
 
 const MyPosts = () => {
   return (
-    <div>
-      My posts
+    <div className={cssClass.postBlock}>
+        <h3>My posts</h3>
       <div>
         <textarea></textarea>
-        <button>Add post</button>
+      </div>
+        <div>
+        <button className={cssClass.addPost}>Add post</button>
       </div>
       <div className='posts'>
         <Post message={"Privet kak dela to?"} likes={"2"}/>

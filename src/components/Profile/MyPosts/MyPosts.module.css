@@ -6,3 +6,11 @@
 .item {
   color: green;
 }
+
+.postBlock {
+  padding: 10px;
+}
+
+.addPost {
+  align-items: center;
+}
