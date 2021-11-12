@@ -7,6 +7,7 @@ import React from 'react'
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 
+const renderComponent = () => <Profile />
 
 function App() {
     return (
@@ -15,8 +16,8 @@ function App() {
                 <Header/>
                 <Navbar/>
                 <div className="content">
-                    <Route path='/profile' component={Profile}/>
-                    <Route path='/dialogsNames' component={Dialogs}/>
+                    <Route path='/profile' render={renderComponent}/>
+                    <Route path='/dialogsNames' render={Dialogs}/>
                     {/*<Route path="/" component={}/>*/}
                     {/*<Route path="/" component={}/>*/}
                     {/*<Route path="/" component={}/>*/}
