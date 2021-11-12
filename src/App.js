@@ -16,7 +16,7 @@ function App() {
                 <Navbar/>
                 <div className="content">
                     <Route path='/profile' component={Profile}/>
-                    <Route path='/dialogs' component={Dialogs}/>
+                    <Route path='/dialogsNames' component={Dialogs}/>
                     {/*<Route path="/" component={}/>*/}
                     {/*<Route path="/" component={}/>*/}
                     {/*<Route path="/" component={}/>*/}
@@ -35,8 +35,8 @@ export default App;
 //             <Navbar/>
 //             <div className="content">
 //
-//                 <Route path='/dialogs'>
-//                     <Dialogs/>
+//                 <Route path='/dialogsNames'>
+//                     <Dialog/>
 //                 </Route>
 //                 <Route path='/profile'>
 //                     <Profile/>
