@@ -2,3 +2,25 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
 }
+
+.dialogsItems {
+    padding: 10px;
+}
+
+.dialogsItems a {
+    color: green;
+    text-decoration: none;
+}
+
+.dialogsItems .activeLink {
+    color: gold;
+    text-decoration: none;
+}
+
+.messages {
+    padding: 10px;
+}
+
+.messages .message {
+
+}

@@ -1,13 +1,10 @@
 import './App.css';
-
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
 import React from 'react'
 import Dialogs from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
-
-const renderComponent = () => <Profile />
 
 function App() {
     return (
@@ -16,7 +13,7 @@ function App() {
                 <Header/>
                 <Navbar/>
                 <div className="content">
-                    <Route path='/profile' render={renderComponent}/>
+                    <Route path='/profile' render={Profile}/>
                     <Route path='/dialogsNames' render={Dialogs}/>
                     {/*<Route path="/" component={}/>*/}
                     {/*<Route path="/" component={}/>*/}
