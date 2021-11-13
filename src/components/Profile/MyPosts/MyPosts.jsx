@@ -4,9 +4,7 @@ import cssClass from './MyPosts.module.css'
 
 const MyPosts = (props) => {
 
-
-    let postElemetns = props.state.posts.map( post => <Post message={post.message} likes={post.likes}/>)
-
+    let postElement = props.posts.map(post => <Post message={post.message} likes={post.likes}/>)
     return (
         <div className={cssClass.postBlock}>
             <h3>My posts</h3>
@@ -17,7 +15,7 @@ const MyPosts = (props) => {
                 <button className={cssClass.addPost}>Add post</button>
             </div>
             <div className='posts'>
-                {postElemetns}
+                {postElement}
             </div>
         </div>
     )

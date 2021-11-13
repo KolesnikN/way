@@ -2,6 +2,8 @@
   grid-area: n;
   background-color: burlywood;
   padding: 20px;
+  font-size: 20px;
+
 }
 
 .item a {
@@ -11,5 +13,25 @@
 
 .item a.activeLink {
   color: gold;
+}
 
+.friends a {
+  display: grid;
+  color: mediumspringgreen;
+  text-decoration: none;
+  border: 5px solid rebeccapurple;
+  justify-content: center;
+}
+
+.box1 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.box2 {
+  grid-column-start: 1;
+  grid-row-start: 3;
+  grid-row-end: 5;
 }

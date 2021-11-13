@@ -17,6 +17,12 @@
     text-decoration: none;
 }
 
+.avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
 .messages {
     padding: 10px;
 }

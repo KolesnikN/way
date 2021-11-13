@@ -1,0 +1,15 @@
+.dialogsItems {
+    padding: 10px;
+}
+
+
+
+.dialogsItems .activeLink {
+    color: gold;
+    text-decoration: none;
+}
+.avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
