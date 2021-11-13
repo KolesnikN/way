@@ -5,7 +5,7 @@ import cssClass from './MyPosts.module.css'
 const MyPosts = (props) => {
 
 
-    let postElemetns = props.posts.map( post => <Post message={post.message} likes={post.likes}/>)
+    let postElemetns = props.state.posts.map( post => <Post message={post.message} likes={post.likes}/>)
 
     return (
         <div className={cssClass.postBlock}>
