@@ -3,10 +3,9 @@ import React from 'react'
 import cssClass from './MyPosts.module.css'
 
 const MyPosts = (props) => {
-    console.log(props)
-    let post = [{id: 1, message: "Privet kak dela to?", likes: 23}, {id: 2, message: "4e delaew", likes: 4}]
 
-    let postElemetns = post.map( post => <Post message={post.message} likes={post.likes}/>)
+
+    let postElemetns = props.posts.map( post => <Post message={post.message} likes={post.likes}/>)
 
     return (
         <div className={cssClass.postBlock}>
