@@ -6,6 +6,7 @@ import React from 'react'
 import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 import Friends from "./Friends/Friends";
+import {updatePostText} from "./Redux/state";
 
 const App = (props) => {
     return (
@@ -14,7 +15,10 @@ const App = (props) => {
             <Navbar state={props.state.ownFriends}/>
             <div className="content">
                 <Route path='/profile' render={() => <Profile
-                    state={props.state.profilePage} addPost={props.addPost}/>}/>
+                    profilePage={props.state.profilePage}
+                    addPost={props.addPost}
+                    updatePostText={props.updatePostText}
+                />}/>
                 <Route path='/dialogs' render={() => <Dialogs
                     state={props.state.messagesPage}/>}/>
                 <Route path="/friends" render={() => <Friends
