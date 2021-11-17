@@ -31,30 +31,3 @@ const App = (props) => {
 }
 
 export default App;
-
-// return (
-//     <div className="app-wrapper">
-//         <BrowserRouter>
-//             <Header/>
-//             <Navbar/>
-//             <div className="content">
-//
-//                 <Route path='/dialogsNames'>
-//                     <Dialog/>
-//                 </Route>
-//                 <Route path='/profile'>
-//                     <Profile/>
-//                 </Route>
-//                 {/*<Route path="/profile">*/}
-//                 {/*    <Profile/>*/}
-//                 {/*</Route>*/}
-//                 {/*<Route path="/profile">*/}
-//                 {/*    <Profile/>*/}
-//                 {/*</Route>*/}
-//                 {/*<Route path="/profile">*/}
-//                 {/*    <Profile/>*/}
-//                 {/*</Route>*/}
-//
-//             </div>
-//         </BrowserRouter>
-//     </div>
