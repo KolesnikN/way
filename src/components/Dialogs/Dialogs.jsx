@@ -3,20 +3,37 @@ import cssClass from './Dialogs.module.css'
 import MyMessages from "./Message/MyMessages";
 import Dialog from "./Dialogs/Dialog";
 
-
 const Dialogs = (props) => {
+    let dialogElement = props.dialogs.map(dialog => <Dialog id={dialog.id} name={dialog.name} avatar={dialog.avatar}/>)
+    let messageElements = props.dialogs.map(message => <MyMessages message={message.messages}/>)
 
-    let dialogElement = props.state.dialogs.map(dialog => <Dialog id={dialog.id} name={dialog.name} avatar={dialog.avatar}/>)
-    let messageElements = props.state.dialogs.map(message => <MyMessages message={message.messages}/>)
+    let newDialogElement = React.createRef();
 
+    let addDialog = () => {
+        props.addDialog();
+        props.updateDialogText('');
+    }
+    let onDialogChange = () => {
+        let newDialogMess = newDialogElement.current.value;
+        props.updateDialogText(newDialogMess);
+    }
 
     return (
-        <div className={cssClass.avatar}>
-            <div className={cssClass.dialogsItems}>
+        <div className={cssClass.dialogs}>
+            <div className={cssClass.dialogsItems + ' ' + cssClass.avatar}>
                 {dialogElement}
             </div>
             <div className={cssClass.messages}>
                 {messageElements}
+            </div>
+            <div>
+                <h3>New message</h3>
+                <div>
+                    <textarea onChange={onDialogChange} ref={newDialogElement} value={props.newDialogText}></textarea>
+                </div>
+                <div>
+                    <button onClick={ addDialog }>Send message</button>
+                </div>
             </div>
         </div>
     );

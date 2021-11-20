@@ -1,12 +1,9 @@
 import Post from './Post/Post'
 import React from 'react'
 import cssClass from './MyPosts.module.css'
-import {updatePostText} from "../../../Redux/state";
 
 const MyPosts = (props) => {
-
     let postElement = props.posts.map(post => <Post message={post.message} likes={post.likes}/>);
-
     let newPostElement = React.createRef();
 
     let addPost = () => {

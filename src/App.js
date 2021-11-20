@@ -6,7 +6,6 @@ import React from 'react'
 import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 import Friends from "./Friends/Friends";
-import {updatePostText} from "./Redux/state";
 
 const App = (props) => {
     return (
@@ -20,7 +19,10 @@ const App = (props) => {
                     updatePostText={props.updatePostText}
                 />}/>
                 <Route path='/dialogs' render={() => <Dialogs
-                    state={props.state.messagesPage}/>}/>
+                    dialogs={props.state.messagesPage.dialogs}
+                    addDialog={props.addDialog}
+                    updateDialogText={props.updateDialogText}
+                />}/>
                 <Route path="/friends" render={() => <Friends
                     state={props.state.ownFriends}/>}/>
                 {/*<Route path="/" component={}/>*/}

@@ -8,7 +8,7 @@ let state = {
             {id: 1, message: "Privet kak dela to?", likes: 23},
             {id: 2, message: "4e delaew", likes: 4}
         ],
-        newPostText: 'samuray-way'
+        newPostText: "samuray-way"
 
     },
     messagesPage: {
@@ -25,7 +25,8 @@ let state = {
                 messages: "4to delaew",
                 avatar: "https://m.media-amazon.com/images/M/MV5BMTMzMTg1MjgtOWNhYy00NmZmLWExOTctMjA2OTZhZDFkNDhhXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_.jpg"
             }
-        ]
+        ],
+        newDialogText: "something here"
     },
     ownFriends: {
         friends: [{
@@ -50,7 +51,7 @@ window.state = state;
 
 export const addPost = () => {
     let newPost = {
-        id: 5,
+        id: 3,
         message: state.profilePage.newPostText,
         likes: 0
     };
@@ -58,8 +59,23 @@ export const addPost = () => {
     rerenderEntireTree(state)
 };
 
+export const addDialog = () => {
+    let newMessage = {
+        id: 3,
+        name: "someone",
+        messages: state.messagesPage.newDialogText,
+        avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/1200px-Question_mark_%28black%29.svg.png"
+    };
+    state.messagesPage.dialogs.push(newMessage)
+    rerenderEntireTree(state)
+};
+
 export const updatePostText = (newText) => {
     state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
+}
+export const updateDialogText = (newMess) => {
+    state.messagesPage.newDialogText = newMess
     rerenderEntireTree(state)
 }
 
