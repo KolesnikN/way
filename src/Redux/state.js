@@ -55,33 +55,32 @@ let store = {
   _callSubscriber() {
     console.log()
   },
-  addPost() {
-    let newPost = {
-      id: 3,
-      message: this._state.profilePage.newPostText,
-      likes: 0,
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+      let newPost = {
+        id: 3,
+        message: this._state.profilePage.newPostText,
+        likes: 0,
+      }
+      this._state.profilePage.posts.push(newPost)
+      this._callSubscriber(this._state)
+    } else if (action.type === "UPDATE-POST-TEXT") {
+      this._state.profilePage.newPostText = action.newText
+      this._callSubscriber(this._state)
+    } else if (action.type === "ADD-DIALOG") {
+      let newMessage = {
+        id: 3,
+        name: "someone",
+        messages: this._state.messagesPage.newDialogText,
+        avatar:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/1200px-Question_mark_%28black%29.svg.png",
+      }
+      this._state.messagesPage.dialogs.push(newMessage)
+      this._callSubscriber(this._state)
+    } else if (action.type === "UPDATE-MESS-TEXT") {
+      this._state.messagesPage.newDialogText = action.newMess
+      this._callSubscriber(this._state)
     }
-    this._state.profilePage.posts.push(newPost)
-    this._callSubscriber(this._state)
-  },
-  updatePostText(newText) {
-    this._state.profilePage.newPostText = newText
-    this._callSubscriber(this._state)
-  },
-  addDialog() {
-    let newMessage = {
-      id: 3,
-      name: "someone",
-      messages: this._state.messagesPage.newDialogText,
-      avatar:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/1200px-Question_mark_%28black%29.svg.png",
-    }
-    this._state.messagesPage.dialogs.push(newMessage)
-    this._callSubscriber(this._state)
-  },
-  updateDialogText(newMess) {
-    this._state.messagesPage.newDialogText = newMess
-    this._callSubscriber(this._state)
   },
   subscribe(observer) {
     this._callSubscriber = observer
