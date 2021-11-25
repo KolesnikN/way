@@ -1,3 +1,8 @@
+const ADD_POST = "ADD_POST"
+const UPDATE_POST_TEXT = "UPDATE_POST_TEXT"
+const ADD_DIALOG = "ADD_DIALOG"
+const UPDATE_MESS_TEXT = "UPDATE_MESS_TEXT"
+
 let store = {
   _state: {
     profilePage: {
@@ -56,18 +61,19 @@ let store = {
     console.log()
   },
   dispatch(action) {
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
       let newPost = {
         id: 3,
         message: this._state.profilePage.newPostText,
         likes: 0,
       }
       this._state.profilePage.posts.push(newPost)
+      this._state.profilePage.newPostText = ""
       this._callSubscriber(this._state)
-    } else if (action.type === "UPDATE-POST-TEXT") {
+    } else if (action.type === UPDATE_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText
       this._callSubscriber(this._state)
-    } else if (action.type === "ADD-DIALOG") {
+    } else if (action.type === ADD_DIALOG) {
       let newMessage = {
         id: 3,
         name: "someone",
@@ -76,8 +82,9 @@ let store = {
           "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/1200px-Question_mark_%28black%29.svg.png",
       }
       this._state.messagesPage.dialogs.push(newMessage)
+      this._state.messagesPage.newDialogText = ""
       this._callSubscriber(this._state)
-    } else if (action.type === "UPDATE-MESS-TEXT") {
+    } else if (action.type === UPDATE_MESS_TEXT) {
       this._state.messagesPage.newDialogText = action.newMess
       this._callSubscriber(this._state)
     }
@@ -86,5 +93,13 @@ let store = {
     this._callSubscriber = observer
   },
 }
+
+export const addPostActionCreator = () => ({ type: ADD_POST })
+export const updatePostAction = (text) => ({
+  type: UPDATE_POST_TEXT,
+  text: text,
+})
+export const addMessageActionCreater = () => ({ type: ADD_DIALOG })
+export const updateMessAction = (message) => ({ type: ADD_POST, text: message })
 
 export default store

@@ -17,9 +17,9 @@ const Dialogs = (props) => {
     props.dispatch({ type: "ADD-DIALOG" })
     props.dispatch({ type: "UPDATE-MESS-TEXT", text: "" })
   }
-  let onDialogChange = () => {
+  let onDialogChange = (text) => {
     let newDialogMess = newDialogElement.current.value
-    props.dispatch({ type: "UPDATE-MESS-TEXT", text: newDialogMess })
+    props.dispatch(updateMessAction(text))
   }
 
   return (
