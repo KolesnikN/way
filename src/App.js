@@ -5,7 +5,7 @@ import Profile from "./components/Profile/Profile"
 import React from "react"
 import Dialogs from "./components/Dialogs/Dialogs"
 import { Route } from "react-router-dom"
-import Friends from "./Friends/Friends"
+import Friends from "./components/Friends/Friends"
 
 const App = (props) => {
   return (

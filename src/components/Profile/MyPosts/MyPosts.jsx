@@ -19,16 +19,18 @@ const MyPosts = (props) => {
 
   return (
     <div className={cssClass.postBlock}>
-      <h3>My posts</h3>
+      <h3>My posts:</h3>
       <div>
         <textarea
           onChange={onPostChange}
           ref={newPostElement}
           value={props.newPostText}
+          rows="4"
+          cols="50"
         ></textarea>
       </div>
       <div>
-        <button onClick={addPost} className={cssClass.addPost}>
+        <button onClick={addPost} className={cssClass.addpost}>
           Add post
         </button>
       </div>

@@ -1,13 +1,12 @@
 .nav {
   grid-area: n;
-  background-color: burlywood;
+  background-color: gray;
   padding: 20px;
   font-size: 20px;
-
 }
 
 .item a {
-  color: white;
+  color: rgb(2, 2, 2);
   text-decoration: none;
 }
 
@@ -17,9 +16,9 @@
 
 .friends a {
   display: grid;
-  color: mediumspringgreen;
+  color: rgb(3, 206, 13);
   text-decoration: none;
-  border: 5px solid rebeccapurple;
+  border: 3px solid rgb(248, 85, 85);
   justify-content: center;
 }
 

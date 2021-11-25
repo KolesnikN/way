@@ -9,8 +9,16 @@
 
 .postBlock {
   padding: 10px;
+  color: #0206f7;
 }
 
-.addPost {
-  align-items: center;
+.addpost {
+  background-color: #0206f7;
+  border: none;
+  color: white;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
