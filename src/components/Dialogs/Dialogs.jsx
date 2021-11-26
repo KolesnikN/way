@@ -2,6 +2,7 @@ import React from "react"
 import cssClass from "./Dialogs.module.css"
 import MyMessages from "./Message/MyMessages"
 import Dialog from "./Dialogs/Dialog"
+import {updateMessAction} from "../../Redux/state";
 
 const Dialogs = (props) => {
   let dialogElement = props.dialogs.map((dialog) => (
@@ -19,7 +20,7 @@ const Dialogs = (props) => {
   }
   let onDialogChange = (text) => {
     let newDialogMess = newDialogElement.current.value
-    props.dispatch(updateMessAction(text))
+    props.dispatch(updateMessAction(newDialogMess))
   }
 
   return (
