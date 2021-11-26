@@ -2,7 +2,7 @@ import React from "react"
 import cssClass from "./Dialogs.module.css"
 import MyMessages from "./Message/MyMessages"
 import Dialog from "./Dialogs/Dialog"
-import {updateMessAction} from "../../Redux/state";
+import { addDialogActionCreator, updateDialogAction } from "../../Redux/state"
 
 const Dialogs = (props) => {
   let dialogElement = props.dialogs.map((dialog) => (
@@ -15,12 +15,11 @@ const Dialogs = (props) => {
   let newDialogElement = React.createRef()
 
   let addDialog = () => {
-    props.dispatch({ type: "ADD-DIALOG" })
-    props.dispatch({ type: "UPDATE-MESS-TEXT", text: "" })
+    props.dispatch(addDialogActionCreator())
   }
-  let onDialogChange = (text) => {
+  let onDialogChange = () => {
     let newDialogMess = newDialogElement.current.value
-    props.dispatch(updateMessAction(newDialogMess))
+    props.dispatch(updateDialogAction(newDialogMess))
   }
 
   return (

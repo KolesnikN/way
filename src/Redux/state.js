@@ -1,7 +1,7 @@
 const ADD_POST = "ADD_POST"
 const UPDATE_POST_TEXT = "UPDATE_POST_TEXT"
 const ADD_DIALOG = "ADD_DIALOG"
-const UPDATE_MESS_TEXT = "UPDATE_MESS_TEXT"
+const UPDATE_DIALOG_TEXT = "UPDATE_DIALOG_TEXT"
 
 let store = {
   _state: {
@@ -62,30 +62,29 @@ let store = {
   },
   dispatch(action) {
     if (action.type === ADD_POST) {
-      let newPost = {
+      let post = this._state.profilePage.newPostText
+      this._state.profilePage.posts.push({
         id: 3,
-        message: this._state.profilePage.newPostText,
+        message: post,
         likes: 0,
-      }
-      this._state.profilePage.posts.push(newPost)
-      this._state.profilePage.newPostText = ''
-      this._callSubscriber(this._state)
-    } else if (action.type === UPDATE_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText
+      })
+      this._state.profilePage.newPostText = ""
       this._callSubscriber(this._state)
     } else if (action.type === ADD_DIALOG) {
-      let newMessage = {
+      let body = this._state.messagesPage.newDialogText
+      this._state.messagesPage.dialogs.push({
         id: 3,
-        name: "someone",
-        messages: this._state.messagesPage.newDialogText,
+        messages: body,
         avatar:
           "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/1200px-Question_mark_%28black%29.svg.png",
-      }
-      this._state.messagesPage.dialogs.push(newMessage)
+      })
       this._state.messagesPage.newDialogText = ""
       this._callSubscriber(this._state)
-    } else if (action.type === UPDATE_MESS_TEXT) {
-      this._state.messagesPage.newDialogText = action.newMess
+    } else if (action.type === UPDATE_POST_TEXT) {
+      this._state.profilePage.newPostText = action.text
+      this._callSubscriber(this._state)
+    } else if (action.type === UPDATE_DIALOG_TEXT) {
+      this._state.messagesPage.newDialogText = action.text
       this._callSubscriber(this._state)
     }
   },
@@ -95,11 +94,14 @@ let store = {
 }
 
 export const addPostActionCreator = () => ({ type: ADD_POST })
-export const updatePostAction = (text) => ({
+export const updatePostAction = (post) => ({
   type: UPDATE_POST_TEXT,
-  text: text,
+  text: post,
 })
-export const addMessageActionCreater = () => ({ type: ADD_DIALOG })
-export const updateMessAction = (message) => ({ type: ADD_POST, text: message })
+export const addDialogActionCreator = () => ({ type: ADD_DIALOG })
+export const updateDialogAction = (message) => ({
+  type: UPDATE_DIALOG_TEXT,
+  text: message,
+})
 
 export default store
