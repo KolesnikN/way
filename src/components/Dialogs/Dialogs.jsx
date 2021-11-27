@@ -2,7 +2,10 @@ import React from "react"
 import cssClass from "./Dialogs.module.css"
 import MyMessages from "./Message/MyMessages"
 import Dialog from "./Dialogs/Dialog"
-import { addDialogActionCreator, updateDialogAction } from "../../Redux/state"
+import {
+  addDialogActionCreator,
+  updateDialogAction,
+} from "../../Redux/dialog-reducer"
 
 const Dialogs = (props) => {
   let dialogElement = props.dialogs.map((dialog) => (
