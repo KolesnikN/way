@@ -1,32 +1,31 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
+  display: grid;
+  grid-template-columns: 3fr 10fr;
 }
 
 .dialogsItems {
-    padding: 10px;
+  padding: 10px;
 }
 
 .dialogsItems a {
-    color: green;
-    text-decoration: none;
+  color: green;
+  text-decoration: none;
 }
 
 .dialogsItems .activeLink {
-    color: gold;
-    text-decoration: none;
+  color: gold;
+  text-decoration: none;
 }
 
 .avatar img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 
 .messages {
-    padding: 10px;
+  padding: 10px;
 }
 
 .messages .message {
-
 }
