@@ -4,7 +4,7 @@ import MyMessages from "./Message/MyMessages"
 import Dialog from "./Dialogs/Dialog"
 
 const Dialogs = (props) => {
-  let state = props.messagesPage
+  let state = props.dialogPage
 
   let dialogElement = state.dialogs.map((dialog) => (
     <Dialog id={dialog.id} name={dialog.name} avatar={dialog.avatar} />
@@ -16,11 +16,11 @@ const Dialogs = (props) => {
   let newDialogElement = React.createRef()
 
   let addDialog = () => {
-    props.addDialogAction()
+    props.addDialog()
   }
   let onDialogChange = () => {
     let newDialogMess = newDialogElement.current.value
-    props.onDialogChange(newDialogMess)
+    props.updateDialog(newDialogMess)
   }
 
   return (

@@ -6,12 +6,12 @@ import React from "react"
 import { Route } from "react-router-dom"
 import Friends from "./components/Friends/Friends"
 import DialogsContainer from "./components/Dialogs/DialogsContainer"
-
+// state={props.state.ownFriends}
 const App = (props) => {
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar state={props.state.ownFriends} />
+      <Navbar />
       <div className="content">
         <Route path="/profile" render={() => <Profile store={props.store} />} />
         <Route path="/dialogs" render={() => <DialogsContainer />} />

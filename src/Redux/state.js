@@ -10,7 +10,7 @@ let store = {
       ],
       newPostText: "samuray-way",
     },
-    messagesPage: {
+    dialogPage: {
       dialogs: [
         {
           id: 1,
@@ -60,7 +60,7 @@ let store = {
   },
   dispatch(action) {
     this._state.profilePage = postReducer(this._state.profilePage, action)
-    this._state.messagesPage = dialogReducer(this._state.messagesPage, action)
+    this._state.dialogPage = dialogReducer(this._state.dialogPage, action)
     this._callSubscriber(this._state)
   },
   subscribe(observer) {

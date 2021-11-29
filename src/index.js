@@ -3,14 +3,14 @@ import "./index.css"
 import ReactDOM from "react-dom"
 import { BrowserRouter } from "react-router-dom"
 import App from "./App"
-import store from "./Redux/state"
-import { Provider } from "./context"
+import store from "./Redux/redux-store"
+import { Provider } from "react-redux"
 
 let rerenderEntireTree = () => {
   ReactDOM.render(
     <BrowserRouter>
       <Provider store={store}>
-        <App state={store.getState()} />
+        <App />
       </Provider>
     </BrowserRouter>,
     document.getElementById("root")
