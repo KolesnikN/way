@@ -1,5 +1,5 @@
 import React from "react"
-//prepare for redux
+//realize redux
 const StoreContext = React.createContext(null)
 
 export const Provider = (props) => {
