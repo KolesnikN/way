@@ -1,5 +1,5 @@
 import React from "react"
-
+//context training
 const StoreContext = React.createContext(null)
 
 export const Provider = (props) => {
