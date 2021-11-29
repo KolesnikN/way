@@ -14,14 +14,8 @@ const App = (props) => {
       <Navbar state={props.state.ownFriends} />
       <div className="content">
         <Route path="/profile" render={() => <Profile store={props.store} />} />
-        <Route
-          path="/dialogs"
-          render={() => <DialogsContainer store={props.store} />}
-        />
-        <Route
-          path="/friends"
-          render={() => <Friends state={props.state.ownFriends} />}
-        />
+        <Route path="/dialogs" render={() => <DialogsContainer />} />
+        <Route path="/friends" render={() => <Friends />} />
         {/*<Route path="/" component={}/>*/}
         {/*<Route path="/" component={}/>*/}
       </div>
