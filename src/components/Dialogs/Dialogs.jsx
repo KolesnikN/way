@@ -2,27 +2,25 @@ import React from "react"
 import cssClass from "./Dialogs.module.css"
 import MyMessages from "./Message/MyMessages"
 import Dialog from "./Dialogs/Dialog"
-import {
-  addDialogActionCreator,
-  updateDialogAction,
-} from "../../Redux/dialog-reducer"
 
 const Dialogs = (props) => {
-  let dialogElement = props.dialogs.map((dialog) => (
+  let state = props.messagesPage
+
+  let dialogElement = state.dialogs.map((dialog) => (
     <Dialog id={dialog.id} name={dialog.name} avatar={dialog.avatar} />
   ))
-  let messageElements = props.dialogs.map((message) => (
+  let messageElements = state.dialogs.map((message) => (
     <MyMessages message={message.messages} />
   ))
 
   let newDialogElement = React.createRef()
 
   let addDialog = () => {
-    props.dispatch(addDialogActionCreator())
+    props.addDialogAction()
   }
   let onDialogChange = () => {
     let newDialogMess = newDialogElement.current.value
-    props.dispatch(updateDialogAction(newDialogMess))
+    props.onDialogChange(newDialogMess)
   }
 
   return (
@@ -37,7 +35,7 @@ const Dialogs = (props) => {
           <textarea
             onChange={onDialogChange}
             ref={newDialogElement}
-            value={props.newDialogText}
+            value={state.newDialogText}
           ></textarea>
         </div>
         <div>

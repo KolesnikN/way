@@ -1,10 +1,6 @@
 import Post from "./Post/Post"
 import React from "react"
 import cssClass from "./MyPosts.module.css"
-import {
-  addPostActionCreator,
-  updatePostAction,
-} from "../../../Redux/post-reducer"
 
 const MyPosts = (props) => {
   let postElement = props.posts.map((post) => (
@@ -13,11 +9,11 @@ const MyPosts = (props) => {
   let newPostElement = React.createRef()
 
   let addPost = () => {
-    props.dispatch(addPostActionCreator())
+    props.addPostAction()
   }
   let onPostChange = () => {
     let newPost = newPostElement.current.value
-    props.dispatch(updatePostAction(newPost))
+    props.updatePost(newPost)
   }
 
   return (
