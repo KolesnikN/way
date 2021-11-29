@@ -1,5 +1,5 @@
 import React from "react"
-//add component container
+
 const StoreContext = React.createContext(null)
 
 export const Provider = (props) => {

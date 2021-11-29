@@ -3,23 +3,29 @@ import {
   addDialogActionCreator,
   updateDialogAction,
 } from "../../Redux/dialog-reducer"
+import StoreContext from "../../context"
 
-const DialogsContainer = (props) => {
-  let state = props.store.getState().messagesPage
-
-  let addDialog = () => {
-    props.store.dispatch(addDialogActionCreator())
-  }
-  let onDialogChange = (newDialogText) => {
-    props.store.dispatch(updateDialogAction(newDialogText))
-  }
-
+const DialogsContainer = () => {
   return (
-    <Dialogs
-      addDialogAction={addDialog}
-      onDialogChange={onDialogChange}
-      messagesPage={state}
-    />
+    <StoreContext.Consumer>
+      {(store) => {
+        let state = store.getState().messagesPage
+        let addDialog = () => {
+          store.dispatch(addDialogActionCreator())
+        }
+
+        let onDialogChange = (newDialogText) => {
+          store.dispatch(updateDialogAction(newDialogText))
+        }
+        return (
+          <Dialogs
+            addDialogAction={addDialog}
+            onDialogChange={onDialogChange}
+            messagesPage={state}
+          />
+        )
+      }}
+    </StoreContext.Consumer>
   )
 }
 

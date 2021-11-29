@@ -9,12 +9,8 @@ import { Provider } from "./context"
 let rerenderEntireTree = (state) => {
   ReactDOM.render(
     <BrowserRouter>
-      <Provider>
-        <App
-          state={store.getState()}
-          dispatch={store.dispatch.bind(store)}
-          store={store}
-        />
+      <Provider store={store}>
+        <App state={store.getState()} />
       </Provider>
     </BrowserRouter>,
     document.getElementById("root")

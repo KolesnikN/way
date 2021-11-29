@@ -3,24 +3,30 @@ import {
   updatePostAction,
 } from "../../../Redux/post-reducer"
 import MyPosts from "./MyPosts"
+import StoreContext from "../../../context"
 
-const MyPostsContainer = (props) => {
-  let state = props.store.getState()
-
-  let addPost = () => {
-    props.store.dispatch(addPostActionCreator())
-  }
-  let onPostChange = (text) => {
-    let action = updatePostAction(text)
-    props.store.dispatch(action)
-  }
+const MyPostsContainer = () => {
   return (
-    <MyPosts
-      updatePost={onPostChange}
-      addPostAction={addPost}
-      posts={state.profilePage.posts}
-      newPostText={state.profilePage.newPostText}
-    />
+    <StoreContext.Consumer>
+      {(store) => {
+        let state = store.getState()
+        let addPost = () => {
+          store.dispatch(addPostActionCreator())
+        }
+        let onPostChange = (text) => {
+          let action = updatePostAction(text)
+          store.dispatch(action)
+        }
+        return (
+          <MyPosts
+            updatePost={onPostChange}
+            addPostAction={addPost}
+            posts={state.profilePage.posts}
+            newPostText={state.profilePage.newPostText}
+          />
+        )
+      }}
+    </StoreContext.Consumer>
   )
 }
 
