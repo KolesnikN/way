@@ -3,9 +3,8 @@ import Friend from "./Friend/Friend"
 import cssClass from "./Friends.module.css"
 
 const Friends = (props) => {
-  let state = props.friendPage
-
-  let friendElement = state.friends.map((friend) => (
+  debugger
+  let friendElement = props.friends.map((friend) => (
     <Friend id={friend.id} name={friend.name} avatar={friend.avatar} />
   ))
 
@@ -15,8 +14,8 @@ const Friends = (props) => {
     props.addFriend()
   }
   let onFriendNameChange = () => {
-    let newPost = newFriendElement.current.value
-    props.updateFriendName(newPost)
+    let newName = newFriendElement.current.value
+    props.updateFriendName(newName)
   }
 
   return (
@@ -26,7 +25,7 @@ const Friends = (props) => {
         <textarea
           onChange={onFriendNameChange}
           ref={newFriendElement}
-          value={state.newFriendName}
+          value={props.newFriendName}
         ></textarea>
       </div>
       <div>

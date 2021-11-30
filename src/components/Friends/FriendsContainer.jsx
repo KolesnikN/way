@@ -7,7 +7,8 @@ import {
 
 const mapStateToProps = (state) => {
   return {
-    friendPage: state.friendPage,
+    friends: state.friendPage.friends,
+    newFriendName: state.friendPage.newFriendName,
   }
 }
 const mapDispatchToProps = (dispatch) => {

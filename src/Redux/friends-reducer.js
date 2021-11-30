@@ -28,18 +28,23 @@ let initialState = {
 const friendReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FRIEND:
-      let name = state.newFriendName
-      state.friends.push({
+      let newFriend = {
         id: 4,
-        messages: name,
+        name: state.newFriendName,
         avatar:
           "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/1200px-Question_mark_%28black%29.svg.png",
-      })
-      state.newFriendName = ""
-      return state
-    case UPDATE_FRIEND_NAME:
-      state.friends = action.name
-      return state
+      }
+      let stateCopy = { ...state }
+      stateCopy.friends = [...state.friends]
+      stateCopy.friends.push(newFriend)
+      stateCopy.newFriendName = ""
+      return stateCopy
+    case UPDATE_FRIEND_NAME: {
+      let stateCopy = { ...state }
+      stateCopy.newFriendName = action.name
+      return stateCopy
+    }
+
     default:
       return state
   }
