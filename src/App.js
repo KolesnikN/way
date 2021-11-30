@@ -4,18 +4,18 @@ import Navbar from "./components/Navbar/Navbar"
 import Profile from "./components/Profile/Profile"
 import React from "react"
 import { Route } from "react-router-dom"
-import Friends from "./components/Friends/Friends"
 import DialogsContainer from "./components/Dialogs/DialogsContainer"
-// state={props.state.ownFriends}
+import FriendsContainer from "./components/Friends/FriendsContainer"
+
 const App = (props) => {
   return (
     <div className="app-wrapper">
       <Header />
       <Navbar />
       <div className="content">
-        <Route path="/profile" render={() => <Profile store={props.store} />} />
+        <Route path="/profile" render={() => <Profile />} />
         <Route path="/dialogs" render={() => <DialogsContainer />} />
-        <Route path="/friends" render={() => <Friends />} />
+        <Route path="/friends" render={() => <FriendsContainer />} />
         {/*<Route path="/" component={}/>*/}
         {/*<Route path="/" component={}/>*/}
       </div>

@@ -6,7 +6,6 @@ import {
 import { connect } from "react-redux"
 
 const mapStateToProps = (state) => {
-  debugger
   return {
     dialogPage: state.dialogPage,
   }

@@ -1,4 +1,5 @@
 import dialogReducer from "./dialog-reducer"
+import friendReducer from "./friends-reducer"
 import postReducer from "./post-reducer"
 
 let store = {
@@ -29,7 +30,7 @@ let store = {
       ],
       newDialogText: "something here",
     },
-    ownFriends: {
+    friendPage: {
       friends: [
         {
           id: 1,
@@ -50,6 +51,7 @@ let store = {
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMN7kP55J508ra_vUeGcEykw9JlJcmTm5mew&usqp=CAU",
         },
       ],
+      newFriendName: "someone",
     },
   },
   getState() {
@@ -61,6 +63,7 @@ let store = {
   dispatch(action) {
     this._state.profilePage = postReducer(this._state.profilePage, action)
     this._state.dialogPage = dialogReducer(this._state.dialogPage, action)
+    this._state.friendPage = friendReducer(this._state.friendPage, action)
     this._callSubscriber(this._state)
   },
   subscribe(observer) {
