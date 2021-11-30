@@ -10,6 +10,8 @@ let initialState = {
       fullName: "Ilya",
       status: "I'm free",
       location: { city: "Warwaw", country: "Poland" },
+      photo:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCY6gNKi2rS6q6c57CrxPzxvajYRGC7n3w4Q&usqp=CAU",
     },
     {
       id: 2,
@@ -17,6 +19,8 @@ let initialState = {
       fullName: "George",
       status: "I have a beard. And bear",
       location: { city: "Minsk", country: "Belarus" },
+      photo:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU3HFVnkYFJ_OIogo__Qv58bmhwRqZJcQhOA&usqp=CAU",
     },
     {
       id: 3,
@@ -24,6 +28,8 @@ let initialState = {
       fullName: "Nikolai",
       status: "I like node.js",
       location: { city: "Deriv", country: "Belarus" },
+      photo:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt584rMTJ8Yqb6UxgqiV130sgnmDVEMSp8Bw&usqp=CAU",
     },
   ],
 }
@@ -45,7 +51,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         users: state.users.map((user) => {
           if (user.id === action.userID) {
-            return { ...user, follow: true }
+            return { ...user, follow: false }
           }
           return user
         }),

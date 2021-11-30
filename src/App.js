@@ -6,6 +6,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import DialogsContainer from "./components/Dialogs/DialogsContainer"
 import FriendsContainer from "./components/Friends/FriendsContainer"
+import UsersContainer from "./Users/UsersContainer"
 
 const App = (props) => {
   return (
@@ -16,7 +17,7 @@ const App = (props) => {
         <Route path="/profile" render={() => <Profile />} />
         <Route path="/dialogs" render={() => <DialogsContainer />} />
         <Route path="/friends" render={() => <FriendsContainer />} />
-        <Route path="/users" render={() => <div />} />
+        <Route path="/users" render={() => <UsersContainer />} />
         {/*<Route path="/" component={}/>*/}
       </div>
     </div>
