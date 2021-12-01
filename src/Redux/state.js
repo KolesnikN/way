@@ -54,7 +54,6 @@ let store = {
       ],
       newFriendName: "someone",
     },
-    userPage: { users: [] },
   },
   getState() {
     return this._state
@@ -66,7 +65,7 @@ let store = {
     this._state.profilePage = postReducer(this._state.profilePage, action)
     this._state.dialogPage = dialogReducer(this._state.dialogPage, action)
     this._state.friendPage = friendReducer(this._state.friendPage, action)
-    this._state.userPage = userReducer(this._state.userPage, action)
+
     this._callSubscriber(this._state)
   },
   subscribe(observer) {

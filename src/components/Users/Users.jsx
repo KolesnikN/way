@@ -2,6 +2,7 @@ import React from "react"
 import cssClass from "./Users.module.css"
 import avaImg from "./avatar/userAvatar.png"
 import styled from "styled-components"
+import axios from "axios"
 
 const StyledButton = styled.button`
   background-color: black;
@@ -27,6 +28,21 @@ const UserCard = styled.div`
 `
 
 class Users extends React.Component {
+  componentDidMount() {
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.curentPage}`
+      )
+      .then((resp) => {
+        this.props.setUsers(resp.data.items)
+        this.props.setTotalUsersCount(resp.data.totalCount)
+      })
+  }
+
+  onPageChanged = (pageNumber) => {
+    this.props.serCurrentPage(pageNumber)
+    axios.get(``)
+  }
   render() {
     return (
       <div>

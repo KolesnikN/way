@@ -1,37 +1,14 @@
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
 const SET_USERS = "SET_USERS"
+const CURRENT_PAGE = "CURRENT_PAGE"
+const TOTAL_PAGE = "TOTAL_PAGE"
 
 let initialState = {
-  users: [
-    {
-      id: 1,
-      follow: true,
-      fullName: "Ilya",
-      status: "I'm free",
-      location: { city: "Warwaw", country: "Poland" },
-      photo:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCY6gNKi2rS6q6c57CrxPzxvajYRGC7n3w4Q&usqp=CAU",
-    },
-    {
-      id: 2,
-      follow: false,
-      fullName: "George",
-      status: "I have a beard. And bear",
-      location: { city: "Minsk", country: "Belarus" },
-      photo:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU3HFVnkYFJ_OIogo__Qv58bmhwRqZJcQhOA&usqp=CAU",
-    },
-    {
-      id: 3,
-      follow: true,
-      fullName: "Nikolai",
-      status: "I like node.js",
-      location: { city: "Deriv", country: "Belarus" },
-      photo:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt584rMTJ8Yqb6UxgqiV130sgnmDVEMSp8Bw&usqp=CAU",
-    },
-  ],
+  users: [],
+  pageSize: 2,
+  totalUsersCount: 0,
+  curentPage: 2,
 }
 
 const userReducer = (state = initialState, action) => {
@@ -57,7 +34,11 @@ const userReducer = (state = initialState, action) => {
         }),
       }
     case SET_USERS:
-      return { ...state, users: [...state.users, ...action.users] }
+      return { ...state, users: [...action.users] }
+    case CURRENT_PAGE:
+      return { ...state, curentPage: action.curentPage }
+    case TOTAL_PAGE:
+      return { ...state, totalUsersCount: action.count }
     default:
       return state
   }
@@ -69,5 +50,45 @@ export const unfollowUserChanger = (userID) => ({
   type: UNFOLLOW,
   userID,
 })
+export const setCurrentPageAction = (currentPage) => ({
+  type: CURRENT_PAGE,
+  currentPage,
+})
+export const setTotalUsersCountAction = (totalUsersCount) => ({
+  type: TOTAL_PAGE,
+  count: totalUsersCount,
+})
 
 export default userReducer
+
+// let initialState = {
+//   users: [
+//     {
+//       id: 1,
+//       follow: true,
+//       fullName: "Ilya",
+//       status: "I'm free",
+//       location: { city: "Warwaw", country: "Poland" },
+//       photo:
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCY6gNKi2rS6q6c57CrxPzxvajYRGC7n3w4Q&usqp=CAU",
+//     },
+//     {
+//       id: 2,
+//       follow: false,
+//       fullName: "George",
+//       status: "I have a beard. And bear",
+//       location: { city: "Minsk", country: "Belarus" },
+//       photo:
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU3HFVnkYFJ_OIogo__Qv58bmhwRqZJcQhOA&usqp=CAU",
+//     },
+//     {
+//       id: 3,
+//       follow: true,
+//       fullName: "Nikolai",
+//       status: "I like node.js",
+//       location: { city: "Deriv", country: "Belarus" },
+//       photo:
+//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt584rMTJ8Yqb6UxgqiV130sgnmDVEMSp8Bw&usqp=CAU",
+//     },
+//   ],
+// }
