@@ -6,7 +6,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import DialogsContainer from "./components/Dialogs/DialogsContainer"
 import FriendsContainer from "./components/Friends/FriendsContainer"
-import UsersContainer from "./Users/UsersContainer"
+import UsersContainer from "./components/Users/UsersContainer"
 
 const App = (props) => {
   return (

@@ -3,7 +3,6 @@ import Friend from "./Friend/Friend"
 import cssClass from "./Friends.module.css"
 
 const Friends = (props) => {
-  debugger
   let friendElement = props.friends.map((friend) => (
     <Friend id={friend.id} name={friend.name} avatar={friend.avatar} />
   ))
