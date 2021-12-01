@@ -13,12 +13,16 @@
 }
 
 .addpost {
+  margin: 15px;
+  padding: 15px;
   background-color: #0206f7;
-  border: none;
+  border: 1px solid transparent;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  text-indent: 1%;
+  box-shadow: 0 10px 0 0 #593723, 0 10px 15px 2px rgba(0, 0, 0, 0.8);
 }
