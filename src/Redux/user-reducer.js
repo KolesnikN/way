@@ -3,12 +3,14 @@ const UNFOLLOW = "UNFOLLOW"
 const SET_USERS = "SET_USERS"
 const CURRENT_PAGE = "CURRENT_PAGE"
 const TOTAL_PAGE = "TOTAL_PAGE"
+const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING"
 
 let initialState = {
   users: [],
   pageSize: 10,
   totalUsersCount: 0,
   currentPage: 1,
+  isFetching: true,
 }
 
 const userReducer = (state = initialState, action) => {
@@ -39,6 +41,8 @@ const userReducer = (state = initialState, action) => {
       return { ...state, currentPage: action.currentPage }
     case TOTAL_PAGE:
       return { ...state, totalUsersCount: action.count }
+    case TOGGLE_IS_FETCHING:
+      return { ...state, isFetching: action.isFetching }
     default:
       return state
   }
@@ -58,37 +62,9 @@ export const setTotalUsersCountAction = (totalUsersCount) => ({
   type: TOTAL_PAGE,
   count: totalUsersCount,
 })
+export const toggleIsFetchingCreator = (isFetching) => ({
+  type: TOGGLE_IS_FETCHING,
+  isFetching,
+})
 
 export default userReducer
-
-// let initialState = {
-//   users: [
-//     {
-//       id: 1,
-//       follow: true,
-//       fullName: "Ilya",
-//       status: "I'm free",
-//       location: { city: "Warwaw", country: "Poland" },
-//       photo:
-//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCY6gNKi2rS6q6c57CrxPzxvajYRGC7n3w4Q&usqp=CAU",
-//     },
-//     {
-//       id: 2,
-//       follow: false,
-//       fullName: "George",
-//       status: "I have a beard. And bear",
-//       location: { city: "Minsk", country: "Belarus" },
-//       photo:
-//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU3HFVnkYFJ_OIogo__Qv58bmhwRqZJcQhOA&usqp=CAU",
-//     },
-//     {
-//       id: 3,
-//       follow: true,
-//       fullName: "Nikolai",
-//       status: "I like node.js",
-//       location: { city: "Deriv", country: "Belarus" },
-//       photo:
-//         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt584rMTJ8Yqb6UxgqiV130sgnmDVEMSp8Bw&usqp=CAU",
-//     },
-//   ],
-// }
