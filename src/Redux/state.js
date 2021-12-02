@@ -1,6 +1,6 @@
 import dialogReducer from "./dialog-reducer"
 import friendReducer from "./friends-reducer"
-import postReducer from "./post-reducer"
+import postReducer from "./profile-reducer"
 import userReducer from "./user-reducer"
 
 let store = {
