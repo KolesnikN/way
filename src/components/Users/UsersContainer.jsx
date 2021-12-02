@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(unfollowUserChanger(userID))
     },
     setUsers: (users) => {
-      dispatch(setUsersAction, users)
+      dispatch(setUsersAction(users))
     },
     setCurrentPage: (pageNumber) => {
       dispatch(setCurrentPageAction(pageNumber))
