@@ -5,3 +5,9 @@
 .header img {
   width: 160px;
 }
+.login {
+  float: right;
+}
+.login a {
+  color: whitesmoke;
+}
