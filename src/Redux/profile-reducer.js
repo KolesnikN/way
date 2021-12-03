@@ -42,7 +42,7 @@ export const updatePostAction = (post) => ({
 })
 export const setUserProfile = (profile) => ({
   type: SET_USER_PROFILE,
-  user: profile,
+  userProfile: profile,
 })
 
 export default profileReducer
