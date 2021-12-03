@@ -2,7 +2,7 @@ import React from "react"
 import cssClass from "./Users.module.css"
 import avaImg from "./avatar/userAvatar.png"
 import styled from "styled-components"
-import NavLink from "react-router-dom/NavLink";
+import { NavLink } from "react-router-dom"
 
 const StyledButton = styled.button`
   background-color: black;
@@ -54,13 +54,12 @@ const Users = (props) => {
         <div key={user.id}>
           <span>
             <div>
-                <NavLink to{'/profile/' + user.id}>
-              <img
-                src={user.photos.small != null ? user.photos.small : avaImg}
-                className={cssClass.photo}
-                alt=""
-              />
-                    </NavLink>
+              <NavLink to={"/profile/" + user.id}>
+                <img
+                  src={user.photos.small != null ? user.photos.small : avaImg}
+                  className={cssClass.photo}
+                />
+              </NavLink>
             </div>
             <div>
               {user.follow ? (

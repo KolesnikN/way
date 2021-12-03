@@ -28,7 +28,7 @@ const profileReducer = (state = initialState, action) => {
     case SET_USER_PROFILE:
       return {
         ...state,
-        userProfile: action.profile,
+        profile: action.profile,
       }
     default:
       return state
@@ -40,9 +40,9 @@ export const updatePostAction = (post) => ({
   type: UPDATE_POST_TEXT,
   post: post,
 })
-export const setUserProfile = (profile) => ({
+export const setUserProfile = (profileId) => ({
   type: SET_USER_PROFILE,
-  userProfile: profile,
+  profile: profileId,
 })
 
 export default profileReducer
