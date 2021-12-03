@@ -58,6 +58,7 @@ const Users = (props) => {
                 <img
                   src={user.photos.small != null ? user.photos.small : avaImg}
                   className={cssClass.photo}
+                  alt=""
                 />
               </NavLink>
             </div>
