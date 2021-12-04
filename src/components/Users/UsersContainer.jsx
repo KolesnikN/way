@@ -9,7 +9,6 @@ import {
   unfollow,
 } from "../../Redux/user-reducer"
 import Users from "./Users"
-import axios from "axios"
 import Loading from "../common/loading/Loadings"
 import { usersAPI } from "../api/api"
 
