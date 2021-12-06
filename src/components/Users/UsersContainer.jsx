@@ -5,6 +5,7 @@ import {
   setCurrentPage,
   unfollow,
   getUsers,
+  toggleIsFetching,
 } from "../../Redux/user-reducer"
 import Users from "./Users"
 import Loading from "../common/loading/Loadings"
@@ -44,32 +45,11 @@ const mapStateToProps = (state) => {
     isFetching: state.userPage.isFetching,
   }
 }
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     follow: (userID) => {
-//       dispatch(follow(userID))
-//     },
-//     unfollow: (userID) => {
-//       dispatch(unfollow(userID))
-//     },
-//     setUsers: (users) => {
-//       dispatch(setUsers(users))
-//     },
-//     setCurrentPage: (pageNumber) => {
-//       dispatch(setCurrentPage(pageNumber))
-//     },
-//     setTotalUsersCount: (totalPage) => {
-//       dispatch(setTotalUsersCount(totalPage))
-//     },
-//     toggleIsFetching: (isFetching) => {
-//       dispatch(toggleIsFetching(isFetching))
-//     },
-//   }
-// }
 
 export default connect(mapStateToProps, {
   follow,
   unfollow,
   setCurrentPage,
   getUsers,
+  toggleIsFetching,
 })(UsersContainer)

@@ -72,10 +72,10 @@ export const toggleIsFetching = (isFetching) => ({
 export const getUsers = (currentPage, pageSize) => {
   return (dispatch) => {
     dispatch(toggleIsFetching(true))
-    usersAPI.getUsers(currentPage, pageSize).then((data) => {
-      dispatch.toggleIsFetching(false)
-      dispatch.setUsers(data.items)
-      dispatch.setTotalUsersCount(data.totalCount)
+    usersAPI(currentPage, pageSize).then((data) => {
+      dispatch(toggleIsFetching(false))
+      dispatch(setUsers(data.items))
+      dispatch(setTotalUsersCount(data.totalCount))
     })
   }
 }
