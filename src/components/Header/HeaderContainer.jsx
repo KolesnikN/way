@@ -2,7 +2,6 @@ import React from "react"
 import { setAuthUserData, authProfile } from "../../Redux/auth-reducer"
 import { connect } from "react-redux"
 import Header from "./Header"
-import { authAPI } from "../api/api"
 
 export class HeaderContainer extends React.Component {
   componentDidMount() {

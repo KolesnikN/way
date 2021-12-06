@@ -4,18 +4,18 @@ import {
   follow,
   setCurrentPage,
   unfollow,
-  getUsers,
   toggleIsFetching,
+  getAuthUserData,
 } from "../../Redux/user-reducer"
 import Users from "./Users"
 import Loading from "../common/loading/Loadings"
 
 export class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.pageSize)
+    this.props.getAuthUserData(this.props.currentPage, this.props.pageSize)
   }
   onPageChanged = (pageNumber) => {
-    this.props.getUsers(pageNumber, this.props.pageSize)
+    this.props.getAuthUserData(pageNumber, this.props.pageSize)
   }
 
   render() {
@@ -50,6 +50,6 @@ export default connect(mapStateToProps, {
   follow,
   unfollow,
   setCurrentPage,
-  getUsers,
   toggleIsFetching,
+  getAuthUserData,
 })(UsersContainer)
