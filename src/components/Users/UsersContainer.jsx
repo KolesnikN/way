@@ -16,7 +16,7 @@ export class UsersContainer extends React.Component {
   }
   onPageChanged = (pageNumber) => {
     this.props.getAuthUserData(pageNumber, this.props.pageSize)
-  }
+  } //
 
   render() {
     return (
