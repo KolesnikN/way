@@ -1,6 +1,12 @@
 const ADD_FRIEND = "ADD_FRIEND"
 const UPDATE_FRIEND_NAME = "UPDATE_FRIEND_NAME"
 
+type FriendsType = {
+  id: number
+  name: string
+  avatar: string
+}
+
 let initialState = {
   friends: [
     {
@@ -21,11 +27,15 @@ let initialState = {
       avatar:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMN7kP55J508ra_vUeGcEykw9JlJcmTm5mew&usqp=CAU",
     },
-  ],
+  ] as Array<FriendsType>,
   newFriendName: "someone",
 }
 
-const friendReducer = (state = initialState, action) => {
+// type InitialStateType = typeof initialState
+
+// const friendReducer = (state = initialState, action: any): InitialStateType => FOR FUTURE
+
+const friendReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case ADD_FRIEND:
       let newFriend = state.newFriendName
@@ -52,8 +62,17 @@ const friendReducer = (state = initialState, action) => {
   }
 }
 
-export const addFriendsActionCreator = () => ({ type: ADD_FRIEND })
-export const updateFriendNameAction = (name) => ({
+type AddFriendsActionCreatorType = {
+  type: typeof ADD_FRIEND
+  friend: Array<FriendsType>
+}
+export const addFriendsActionCreator = (
+  friend: Array<FriendsType>
+): AddFriendsActionCreatorType => ({
+  type: ADD_FRIEND,
+  friend,
+})
+export const updateFriendNameAction = (name: string) => ({
   type: UPDATE_FRIEND_NAME,
   name: name,
 })
