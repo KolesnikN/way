@@ -1,3 +1,4 @@
+import { PhotosType } from "./../types/types"
 import { usersAPI } from "../components/api/api"
 
 const FOLLOW = "FOLLOW"
@@ -7,15 +8,25 @@ const CURRENT_PAGE = "CURRENT_PAGE"
 const TOTAL_PAGE = "TOTAL_PAGE"
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING"
 
+type UserType = {
+  id: number
+  name: string
+  status: string | null
+  followed: boolean
+  photos: PhotosType
+}
+
 let initialState = {
-  users: [],
+  users: [] as Array<UserType>,
   pageSize: 10,
   totalUsersCount: 0,
   currentPage: 1,
   isFetching: true,
 }
 
-const userReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState
+
+const userReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case FOLLOW:
       return {
@@ -50,27 +61,58 @@ const userReducer = (state = initialState, action) => {
   }
 }
 
-export const setUsers = (users) => ({ type: SET_USERS, users })
-export const follow = (userID) => ({ type: FOLLOW, userID })
-export const unfollow = (userID) => ({
+type SetUsersType = {
+  type: typeof SET_USERS
+  users: Array<UserType>
+}
+export const setUsers = (users: Array<UserType>): SetUsersType => ({
+  type: SET_USERS,
+  users,
+})
+type FollowType = {
+  type: typeof FOLLOW
+  userID: number
+}
+export const follow = (userID: number): FollowType => ({ type: FOLLOW, userID })
+type UnfollowType = {
+  type: typeof UNFOLLOW
+  userID: number
+}
+export const unfollow = (userID: number): UnfollowType => ({
   type: UNFOLLOW,
   userID,
 })
-export const setCurrentPage = (currentPage) => ({
+type SetCurrentPageType = {
+  type: typeof CURRENT_PAGE
+  currentPage: number
+}
+export const setCurrentPage = (currentPage: number): SetCurrentPageType => ({
   type: CURRENT_PAGE,
   currentPage,
 })
-export const setTotalUsersCount = (totalUsersCount) => ({
+type SetTotalUsersCountType = {
+  type: typeof TOTAL_PAGE
+  count: number
+}
+export const setTotalUsersCount = (
+  totalUsersCount: number
+): SetTotalUsersCountType => ({
   type: TOTAL_PAGE,
   count: totalUsersCount,
 })
-export const toggleIsFetching = (isFetching) => ({
+type ToggleIsFetchingType = {
+  type: typeof TOGGLE_IS_FETCHING
+  isFetching: boolean
+}
+export const toggleIsFetching = (
+  isFetching: boolean
+): ToggleIsFetchingType => ({
   type: TOGGLE_IS_FETCHING,
   isFetching,
 })
 
-export const getAuthUserData = (currentPage, pageSize) => {
-  return (dispatch) => {
+export const getAuthUserData = (currentPage: number, pageSize: number) => {
+  return (dispatch: any) => {
     dispatch(toggleIsFetching(true))
     usersAPI.getUsers(currentPage, pageSize).then((data) => {
       debugger
