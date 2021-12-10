@@ -30,7 +30,7 @@ const profileReducer = (state = initialState, action: any) => {
       let newPost = state.newPostText
       return {
         ...state,
-        newPostText: action.post,
+        newPostText: "",
         posts: [...state.posts, { message: newPost }],
       }
     case UPDATE_POST_TEXT:
