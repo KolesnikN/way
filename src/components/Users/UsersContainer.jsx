@@ -9,6 +9,8 @@ import {
 } from "../../Redux/user-reducer"
 import Users from "./Users"
 import Loading from "../common/loading/Loadings"
+import { compose } from "redux"
+import { withAuthRedirect } from "../../HOC/withAuthRedirect"
 
 export class UsersContainer extends React.Component {
   componentDidMount() {
@@ -46,10 +48,13 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {
-  follow,
-  unfollow,
-  setCurrentPage,
-  toggleIsFetching,
-  getAuthUserData,
-})(UsersContainer)
+export default compose(
+  withAuthRedirect,
+  connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setCurrentPage,
+    toggleIsFetching,
+    getAuthUserData,
+  })
+)(UsersContainer)
