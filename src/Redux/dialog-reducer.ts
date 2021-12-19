@@ -1,5 +1,4 @@
 const ADD_DIALOG = "ADD_DIALOG"
-const UPDATE_DIALOG_TEXT = "UPDATE_DIALOG_TEXT"
 
 export type DialogsType = {
   id: number
@@ -32,16 +31,10 @@ export type InitialStateType = typeof initialState
 const dialogReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
     case ADD_DIALOG: {
-      // let newDialog = action.message
+      // let body = action.newMessageBody
       return {
         ...state,
-        dialogs: [...state.dialogs], // [...state.dialogs, { id: 6, messages: newDialog }]
-      }
-    }
-    case UPDATE_DIALOG_TEXT: {
-      return {
-        ...state,
-        dialogs: [...state.dialogs],
+        dialogs: [...state.dialogs], //{ id: 6, message: body }],
       }
     }
     default:
@@ -51,18 +44,14 @@ const dialogReducer = (state = initialState, action: any): InitialStateType => {
 
 type addDialogActionCreatorType = {
   type: typeof ADD_DIALOG
-  message: string
+  newMessageBody: string
 }
 
-export const addDialogActionCreator = (
-  message: string
-): addDialogActionCreatorType => ({
+
+export const addDialogActionCreator = (newMessageBody: any): addDialogActionCreatorType => ({
   type: ADD_DIALOG,
-  message,
+  newMessageBody,
 })
-export const updateDialogAction = (message: string) => ({
-  type: UPDATE_DIALOG_TEXT,
-  message: message,
-})
+
 
 export default dialogReducer

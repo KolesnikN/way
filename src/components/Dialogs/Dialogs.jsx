@@ -2,6 +2,8 @@ import React from "react"
 import cssClass from "./Dialogs.module.css"
 import MyMessages from "./Message/MyMessages"
 import Dialog from "./Dialogs/Dialog"
+import { reduxForm } from "redux-form"
+import AddMessageForm from "./AddMessageForm/AddMessageForm"
 
 const Dialogs = (props) => {
   let state = props.dialogPage
@@ -13,16 +15,9 @@ const Dialogs = (props) => {
     <MyMessages message={message.messages} />
   ))
 
-  let newDialogElement = React.createRef()
-
-  let addDialog = () => {
-    props.addDialog()
+  let addNewMessage = (values) => {
+    props.sendMessage(values.newMessageBody);
   }
-  let onDialogChange = () => {
-    let newDialogMess = newDialogElement.current.value
-    props.updateDialog(newDialogMess)
-  }
-
   return (
     <div className={cssClass.dialogs}>
       <div className={cssClass.dialogsItems + " " + cssClass.avatar}>
@@ -31,19 +26,14 @@ const Dialogs = (props) => {
       <div className={cssClass.messages}>{messageElements}</div>
       <div>
         <h3>New message</h3>
-        <div>
-          <textarea
-            onChange={onDialogChange}
-            ref={newDialogElement}
-            value={state.newDialogText}
-          ></textarea>
-        </div>
-        <div>
-          <button onClick={addDialog}>Send message</button>
-        </div>
       </div>
+      <AddMessageFormRedux onSubmit={addNewMessage} />
     </div>
   )
 }
+
+const AddMessageFormRedux = reduxForm({ form: "dialogAddMessageForm" })(
+  AddMessageForm
+)
 
 export default Dialogs

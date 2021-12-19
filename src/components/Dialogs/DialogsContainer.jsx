@@ -1,8 +1,5 @@
 import Dialogs from "./Dialogs"
-import {
-  addDialogActionCreator,
-  updateDialogAction,
-} from "../../Redux/dialog-reducer"
+import {addDialogActionCreator} from "../../Redux/dialog-reducer"
 import { connect } from "react-redux"
 import { withAuthRedirect } from "../../HOC/withAuthRedirect"
 import { compose } from "redux"
@@ -14,12 +11,9 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    addDialog: () => {
-      dispatch(addDialogActionCreator())
-    },
-    updateDialog: (text) => {
-      dispatch(updateDialogAction(text))
-    },
+    sendMessage: (newMessageBody) => {
+      dispatch(addDialogActionCreator(newMessageBody))
+    }
   }
 }
 

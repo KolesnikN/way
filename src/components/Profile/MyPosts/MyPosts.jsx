@@ -1,50 +1,50 @@
 import Post from "./Post/Post"
 import React from "react"
 import cssClass from "./MyPosts.module.css"
-import styled from "styled-components"
+// import styled from "styled-components"
+import { Field, reduxForm } from "redux-form"
 
-const Input = styled.input`
-  size: 2em,
-  color: palevioletred;
-  font-size: 2em;
-  border: 2px solid palevioletred;
-  border-radius: 6px;
+let AddNewPostForm = (props) => {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <div>
+        <Field name="newPostText" component="textarea" />
+      </div>
+      <div>
+        <button>Add post</button>
+      </div>
+    </form>
+  )
+}
 
-  margin: 200px
-  padding: 200px
-`
+let AddNewPostFormRedux = reduxForm({ form: "ProfileAddNewPostForm" })(
+  AddNewPostForm
+)
+
+// const Input = styled.input`
+//   size: 2em,
+//   color: palevioletred;
+//   font-size: 2em;
+//   border: 2px solid palevioletred;
+//   border-radius: 6px;
+
+//   margin: 200px
+//   padding: 200px
+// `
 
 const MyPosts = (props) => {
   let postElement = props.posts.map((post) => (
     <Post message={post.message} likes={post.likes} />
   ))
-  let newPostElement = React.createRef()
 
-  let addPost = () => {
-    props.addPost()
-  }
-  let onPostChange = () => {
-    let newPost = newPostElement.current.value
-    props.updatePost(newPost)
+  let onAddPost = (values) => {
+    props.addPost(values.newPostText);
   }
 
   return (
     <div className={cssClass.postBlock}>
       <h3>My posts:</h3>
-      <div>
-        <Input
-          onChange={onPostChange}
-          ref={newPostElement}
-          value={props.newPostText}
-          rows="4"
-          cols="50"
-        ></Input>
-      </div>
-      <div>
-        <button onClick={addPost} className={cssClass.addpost}>
-          Add post
-        </button>
-      </div>
+      <AddNewPostFormRedux onSubmit={onAddPost} />
       <div className="posts">{postElement}</div>
     </div>
   )
