@@ -3,12 +3,24 @@ import React from "react"
 import cssClass from "./MyPosts.module.css"
 // import styled from "styled-components"
 import { Field, reduxForm } from "redux-form"
+import {
+  maxLengthCreator,
+  required,
+} from "../../../utils/validators/validators"
+import { Textarea } from "../../common/FormsControl/FormsControl"
+
+const maxLength10 = maxLengthCreator(10)
 
 let AddNewPostForm = (props) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        <Field name="newPostText" component="textarea" />
+        <Field
+          name="newPostText"
+          component={Textarea}
+          placeholder={"Post message"}
+          validate={[required, maxLength10]}
+        />
       </div>
       <div>
         <button>Add post</button>
@@ -32,20 +44,23 @@ let AddNewPostFormRedux = reduxForm({ form: "ProfileAddNewPostForm" })(
 //   padding: 200px
 // `
 
+
 const MyPosts = (props) => {
-  let postElement = props.posts.map((post) => (
-    <Post message={post.message} likes={post.likes} />
+  let postsElements = props.posts.map((p) => (
+    <Post message={p.message} likesCount={p.likesCount} />
   ))
 
+  let newPostElement = React.createRef()
+
   let onAddPost = (values) => {
-    props.addPost(values.newPostText);
+    props.addPost(values.newPostText)
   }
 
   return (
-    <div className={cssClass.postBlock}>
-      <h3>My posts:</h3>
+    <div className={cssClass.postsBlock}>
+      <h3>My posts</h3>
       <AddNewPostFormRedux onSubmit={onAddPost} />
-      <div className="posts">{postElement}</div>
+      <div className={cssClass.posts}>{postsElements}</div>
     </div>
   )
 }
