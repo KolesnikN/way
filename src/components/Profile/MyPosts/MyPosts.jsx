@@ -7,7 +7,7 @@ import {
   maxLengthCreator,
   required,
 } from "../../../utils/validators/validators"
-import { Textarea } from "../../common/FormsControl/FormsControl"
+import { Textarea } from "../../common/FormsControls/FormsControls"
 
 const maxLength10 = maxLengthCreator(10)
 
@@ -43,7 +43,6 @@ let AddNewPostFormRedux = reduxForm({ form: "ProfileAddNewPostForm" })(
 //   margin: 200px
 //   padding: 200px
 // `
-
 
 const MyPosts = (props) => {
   let postsElements = props.posts.map((p) => (

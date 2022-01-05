@@ -38,3 +38,27 @@ export const profileAPI = {
     )
   },
 }
+
+export const authAPI = {
+  me() {
+    return axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
+      withCredentials: true,
+    })
+  },
+  login(email, password, rememberMe = false) {
+    return axios.get(
+      `https://social-network.samuraijs.com/api/1.0/auth/login`,
+      {
+        withCredentials: true,
+      }
+    )
+  },
+  logout() {
+    return axios.delete(
+      `https://social-network.samuraijs.com/api/1.0/auth/login`,
+      {
+        withCredentials: true,
+      }
+    )
+  },
+}

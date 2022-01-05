@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import {
   addFriendsActionCreator,
   updateFriendNameAction,
-} from "../../Redux/friends-reducer"
+} from "../../redux/friends-reducer"
 
 const mapStateToProps = (state) => {
   return {

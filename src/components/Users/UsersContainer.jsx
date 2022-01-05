@@ -6,7 +6,7 @@ import {
   unfollow,
   toggleIsFetching,
   getAuthUserData,
-} from "../../Redux/user-reducer"
+} from "../../redux/user-reducer"
 import Users from "./Users"
 import Loading from "../common/loading/Loadings"
 import { compose } from "redux"
